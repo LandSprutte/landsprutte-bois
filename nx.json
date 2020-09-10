@@ -21,5 +21,13 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "facia": {
+      "tags": []
+    },
+    "facia-e2e": {
+      "tags": [],
+      "implicitDependencies": ["facia"]
+    }
+  }
 }
