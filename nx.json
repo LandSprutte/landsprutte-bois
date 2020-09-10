@@ -28,6 +28,9 @@
     "facia-e2e": {
       "tags": [],
       "implicitDependencies": ["facia"]
+    },
+    "budgetboi": {
+      "tags": []
     }
   }
 }

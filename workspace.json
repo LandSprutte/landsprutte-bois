@@ -104,6 +104,62 @@
           }
         }
       }
+    },
+    "budgetboi": {
+      "root": "apps/budgetboi",
+      "sourceRoot": "apps/budgetboi/src",
+      "projectType": "application",
+      "prefix": "budgetboi",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/budgetboi",
+            "main": "apps/budgetboi/src/main.ts",
+            "tsConfig": "apps/budgetboi/tsconfig.app.json",
+            "assets": ["apps/budgetboi/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/budgetboi/src/environments/environment.ts",
+                  "with": "apps/budgetboi/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "budgetboi:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/budgetboi/tsconfig.app.json",
+              "apps/budgetboi/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/budgetboi/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/budgetboi/jest.config.js",
+            "tsConfig": "apps/budgetboi/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
